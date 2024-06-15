@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_checkup/core/components/spaces.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/presentation/petugas/bloc/get_pasien/get_pasien_bloc.dart';
 import 'package:medical_checkup/presentation/petugas/widgets/pasien_card.dart';
