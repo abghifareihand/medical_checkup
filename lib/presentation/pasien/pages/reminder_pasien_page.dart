@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:medical_checkup/core/components/custom_alert_delete.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/core/constants/date_time_ext.dart';
+import 'package:medical_checkup/data/datasources/notification_service.dart';
 
 import '../../../core/constants/app_font.dart';
 
@@ -98,9 +100,29 @@ class KeluhanReminderPage extends StatelessWidget {
                         color: Colors.red,
                       ),
                 onTap: () {
-                  // if (!isActive) {
-                  //   _activateNotification(context, reminder);
-                  // }
+                  if (!isActive) {
+                    _activateReminderKeluhan(context, reminder);
+                  }
+                },
+                onLongPress: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return CustomAlertDelete(
+                        title: 'Hapus Reminder Keluhan',
+                        message: 'Anda yakin ingin menghapus reminder ini?',
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .collection('remindersKeluhan')
+                              .doc(reminder.id)
+                              .delete();
+                        },
+                      );
+                    },
+                  );
                 },
               );
             },
@@ -165,9 +187,29 @@ class CheckupReminderPage extends StatelessWidget {
                         color: Colors.red,
                       ),
                 onTap: () {
-                  // if (!isActive) {
-                  //   _activateNotification(context, reminder);
-                  // }
+                  if (!isActive) {
+                    _activateReminderCheckup(context, reminder);
+                  }
+                },
+                onLongPress: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return CustomAlertDelete(
+                        title: 'Hapus Reminder Checkup',
+                        message: 'Anda yakin ingin menghapus reminder ini?',
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .collection('remindersCheckup')
+                              .doc(reminder.id)
+                              .delete();
+                        },
+                      );
+                    },
+                  );
                 },
               );
             },
@@ -176,4 +218,63 @@ class CheckupReminderPage extends StatelessWidget {
       },
     );
   }
+}
+
+
+void _activateReminderKeluhan(
+    BuildContext context, DocumentSnapshot reminder) async {
+  String title = reminder['title'];
+  DateTime scheduledDate = (reminder['scheduledDate'] as Timestamp).toDate();
+
+  // Aktifkan notifikasi dengan waktu yang sudah ada di Firestore
+  NotificationService.addScheduleNotifications(
+    title: 'Medical App',
+    body: title,
+    scheduledDate: scheduledDate,
+  );
+
+  // Update nilai isActive menjadi true di Firestore
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('remindersKeluhan')
+      .doc(reminder.id)
+      .update({'isActive': true});
+
+  if (!context.mounted) return;
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Reminder keluhan aktif'),
+      backgroundColor: Colors.green,
+    ),
+  );
+}
+
+void _activateReminderCheckup(
+    BuildContext context, DocumentSnapshot reminder) async {
+  String title = reminder['title'];
+  DateTime scheduledDate = (reminder['scheduledDate'] as Timestamp).toDate();
+
+  // Aktifkan notifikasi dengan waktu yang sudah ada di Firestore
+  NotificationService.addScheduleNotifications(
+    title: 'Medical App',
+    body: title,
+    scheduledDate: scheduledDate,
+  );
+
+  // Update nilai isActive menjadi true di Firestore
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('remindersCheckup')
+      .doc(reminder.id)
+      .update({'isActive': true});
+
+  if (!context.mounted) return;
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Reminder checkup aktif'),
+      backgroundColor: Colors.green,
+    ),
+  );
 }
