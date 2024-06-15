@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558784882264",
+    "project_id": "gusproject-medical",
+    "storage_bucket": "gusproject-medical.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558784882264:android:0cc84ba2c5396af17c4c2d",
+        "android_client_info": {
+          "package_name": "com.gusproject.medical_checkup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4syny_eEkOho4krIy7W0KliPiZ-jdI5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
