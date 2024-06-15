@@ -4,10 +4,11 @@ import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/core/constants/app_font.dart';
 import 'package:medical_checkup/core/constants/date_time_ext.dart';
 import 'package:medical_checkup/data/models/keluhan_model.dart';
+import 'package:medical_checkup/presentation/pasien/pages/keluhan_pasien_detail_page.dart';
 
-class KeluhanCard extends StatelessWidget {
+class KeluhanPasienCard extends StatelessWidget {
   final KeluhanModel keluhan;
-  const KeluhanCard({
+  const KeluhanPasienCard({
     super.key,
     required this.keluhan,
   });
@@ -18,13 +19,13 @@ class KeluhanCard extends StatelessWidget {
       onTap: keluhan.status == 'diproses'
           ? null
           : () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) =>
-              //         HistoryPasienDetailPage(keluhan: keluhan),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      KeluhanPasienDetailPage(keluhan: keluhan),
+                ),
+              );
             },
       child: Container(
         margin: const EdgeInsets.only(bottom: 16),
@@ -42,12 +43,6 @@ class KeluhanCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Text(
-                //   keluhan.tanggalDatang.toFormattedDate(), // Menggunakan DateFormat untuk mengambil jam dan menit dari timestamp
-                //   style: AppFont.blackText.copyWith(
-                //     fontWeight: medium,
-                //   ),
-                // ),
                 Text(
                   '${keluhan.tanggalDatang.toFormattedDate()} ${DateFormat.Hm().format(keluhan.tanggalDatang)}',
                   style: AppFont.blackText.copyWith(

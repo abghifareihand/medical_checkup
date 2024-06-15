@@ -71,7 +71,7 @@ class _CustomTimeState extends State<CustomTime> {
           ),
           const SizedBox(height: 8.0),
           InkWell(
-            onTap: () => _selectedTime,
+            onTap: () => _selectTime(context),
             child: InputDecorator(
               decoration: InputDecoration(
                 filled: true,

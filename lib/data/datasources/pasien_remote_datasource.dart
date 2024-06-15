@@ -26,7 +26,11 @@ class PasienRemoteDatasource {
   /// Pasien
   Future<Either<String, String>> addKeluhan(KeluhanModel keluhan) async {
     try {
-      await keluhanCollection.doc().set(keluhan.toMap());
+      DocumentReference docRef = await keluhanCollection.add(keluhan.toMap());
+      String documentId = docRef.id;
+      await keluhanCollection.doc(documentId).update({
+        'id': documentId,
+      });
       return const Right('Add Keluhan Berhasil');
     } catch (e) {
       return Left(e.toString());

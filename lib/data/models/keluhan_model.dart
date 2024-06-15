@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class KeluhanModel {
+  final String id;
   final String pasienId;
   final String namaPasien;
   final String keluhanPasien;
@@ -17,10 +18,12 @@ class KeluhanModel {
     required this.tanggalDatang,
     this.tanggalKembali,
     required this.status,
+    required this.id,
   });
 
   factory KeluhanModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     return KeluhanModel(
+      id: snapshot.id,
       pasienId: snapshot['pasienId'],
       namaPasien: snapshot['namaPasien'],
       keluhanPasien: snapshot['keluhanPasien'],

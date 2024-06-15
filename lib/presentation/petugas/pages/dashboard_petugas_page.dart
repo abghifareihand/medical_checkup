@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/presentation/auth/bloc/user/user_bloc.dart';
+import 'package:medical_checkup/presentation/petugas/bloc/get_keluhan/get_keluhan_bloc.dart';
 import 'package:medical_checkup/presentation/petugas/bloc/get_pasien/get_pasien_bloc.dart';
 import 'package:medical_checkup/presentation/petugas/pages/home_petugas_page.dart';
 import 'package:medical_checkup/presentation/petugas/pages/profile_petugas_page.dart';
+import 'package:medical_checkup/presentation/petugas/pages/riwayat_petugas_page.dart';
 
 class DashboardPetugasPage extends StatefulWidget {
   const DashboardPetugasPage({super.key});
@@ -18,6 +20,7 @@ class _DashboardPetugasPageState extends State<DashboardPetugasPage> {
   void initState() {
     context.read<UserBloc>().add(GetUser());
     context.read<GetPasienBloc>().add(GetPasien());
+    context.read<GetKeluhanBloc>().add(GetKeluhan());
     super.initState();
   }
 
@@ -25,9 +28,7 @@ class _DashboardPetugasPageState extends State<DashboardPetugasPage> {
 
   final List<Widget> _pages = [
     const HomePetugasPage(),
-    const Center(
-      child: Text('History Petugas'),
-    ),
+    const RiwayatPetugasPage(),
     const ProfilePetugasPage(),
   ];
 
@@ -79,7 +80,7 @@ class _DashboardPetugasPageState extends State<DashboardPetugasPage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.book),
-                label: 'History',
+                label: 'Riwayat',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),

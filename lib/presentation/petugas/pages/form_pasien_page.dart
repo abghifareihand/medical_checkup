@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_checkup/core/components/custom_button.dart';
 import 'package:medical_checkup/core/components/custom_date.dart';
 import 'package:medical_checkup/core/components/custom_dropdown.dart';
 import 'package:medical_checkup/core/components/custom_text_tile.dart';
+import 'package:medical_checkup/core/components/custom_time.dart';
 import 'package:medical_checkup/core/components/spaces.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/core/constants/date_time_ext.dart';
@@ -35,6 +37,39 @@ class _FormPasienPageState extends State<FormPasienPage> {
   final String _selectedStatusKawin = 'Belum Menikah';
   final String _selectedJenisKelamin = 'Laki - laki';
   DateTime _selectedTanggalKembali = DateTime.now();
+  TimeOfDay _selectedJamKembali = TimeOfDay.now();
+
+  void _scheduleReminder(
+    String userId,
+    String title,
+    DateTime selectedTime,
+  ) async {
+    DateTime scheduledDate = DateTime(
+      _selectedTanggalKembali.year,
+      _selectedTanggalKembali.month,
+      _selectedTanggalKembali.day,
+      selectedTime.hour,
+      selectedTime.minute,
+    );
+
+    // Tambahkan pengingat ke koleksi 'reminders' di dokumen pengguna yang dituju
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('remindersCheckup')
+        .add({
+      'title': title,
+      'scheduledDate': scheduledDate,
+      'isActive': false,
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Reminder Checkup Berhasil ditambah'),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +133,19 @@ class _FormPasienPageState extends State<FormPasienPage> {
           ),
           CustomDate(
             label: 'Tanggal Harus Kembali',
-            onDateChanged: (value) {
+            initialDate: _selectedTanggalKembali,
+            onDateChanged: (newDate) {
               setState(() {
-                _selectedTanggalKembali = value!;
+                _selectedTanggalKembali = newDate!;
+              });
+            },
+          ),
+          CustomTime(
+            label: 'Jam Harus Kembali',
+            initialTime: _selectedJamKembali,
+            onTimeChanged: (newTime) {
+              setState(() {
+                _selectedJamKembali = newTime!;
               });
             },
           ),
@@ -132,6 +177,13 @@ class _FormPasienPageState extends State<FormPasienPage> {
             builder: (context, state) {
               return CustomButton(
                 onPressed: () {
+                  DateTime selectedDateTime = DateTime(
+                    _selectedTanggalKembali.year,
+                    _selectedTanggalKembali.month,
+                    _selectedTanggalKembali.day,
+                    _selectedJamKembali.hour,
+                    _selectedJamKembali.minute,
+                  );
                   context.read<AddCheckupBloc>().add(
                         AddCheckup(
                           checkup: CheckupModel(
@@ -150,6 +202,12 @@ class _FormPasienPageState extends State<FormPasienPage> {
                           ),
                         ),
                       );
+
+                  _scheduleReminder(
+                    widget.pasien.id,
+                    _catatanController.text,
+                    selectedDateTime,
+                  );
                 },
                 text: 'Input Data Pasien',
                 isLoading: state is AddCheckupLoading,

@@ -11,7 +11,9 @@ import 'presentation/pasien/bloc/add_keluhan/add_keluhan_bloc.dart';
 import 'presentation/pasien/bloc/get_checkup_pasien/get_checkup_pasien_bloc.dart';
 import 'presentation/pasien/bloc/get_keluhan_pasien/get_keluhan_pasien_bloc.dart';
 import 'presentation/petugas/bloc/add_checkup/add_checkup_bloc.dart';
+import 'presentation/petugas/bloc/get_keluhan/get_keluhan_bloc.dart';
 import 'presentation/petugas/bloc/get_pasien/get_pasien_bloc.dart';
+import 'presentation/petugas/bloc/update/update_keluhan_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,6 +47,12 @@ class MyApp extends StatelessWidget {
         /// PETUGAS
         BlocProvider(
           create: (context) => GetPasienBloc(),
+        ),
+        BlocProvider(
+          create: (context) => GetKeluhanBloc(),
+        ),
+        BlocProvider(
+          create: (context) => UpdateKeluhanBloc(),
         ),
         BlocProvider(
           create: (context) => AddCheckupBloc(),

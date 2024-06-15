@@ -85,6 +85,7 @@ class _FormKeluhanPageState extends State<FormKeluhanPage> {
                   context.read<AddKeluhanBloc>().add(
                         AddKeluhan(
                           keluhan: KeluhanModel(
+                            id: '',
                             pasienId: pasienId,
                             namaPasien: widget.user.name,
                             keluhanPasien: _keluhanController.text,

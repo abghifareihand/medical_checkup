@@ -6,7 +6,7 @@ import 'package:medical_checkup/core/constants/app_font.dart';
 import 'package:medical_checkup/presentation/auth/bloc/user/user_bloc.dart';
 import 'package:medical_checkup/presentation/pasien/bloc/get_keluhan_pasien/get_keluhan_pasien_bloc.dart';
 import 'package:medical_checkup/presentation/pasien/pages/form_keluhan_page.dart';
-import 'package:medical_checkup/presentation/pasien/widgets/keluhan_card.dart';
+import 'package:medical_checkup/presentation/pasien/widgets/keluhan_pasien_card.dart';
 
 import '../../../core/constants/app_image.dart';
 
@@ -113,7 +113,7 @@ class KeluhanPasienPage extends StatelessWidget {
                   itemCount: data.length,
                   itemBuilder: (context, index) {
                     final keluhan = data[index];
-                    return KeluhanCard(keluhan: keluhan);
+                    return KeluhanPasienCard(keluhan: keluhan);
                   },
                 );
               }

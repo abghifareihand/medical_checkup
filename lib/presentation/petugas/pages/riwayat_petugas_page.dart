@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_checkup/core/components/spaces.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
-import 'package:medical_checkup/presentation/petugas/bloc/get_pasien/get_pasien_bloc.dart';
-import 'package:medical_checkup/presentation/petugas/widgets/pasien_card.dart';
+import 'package:medical_checkup/core/constants/app_font.dart';
+import 'package:medical_checkup/presentation/petugas/bloc/get_keluhan/get_keluhan_bloc.dart';
 
-import '../../../core/constants/app_font.dart';
+import '../widgets/keluhan_petugas_card.dart';
 
-class HomePetugasPage extends StatelessWidget {
-  const HomePetugasPage({super.key});
+class RiwayatPetugasPage extends StatelessWidget {
+  const RiwayatPetugasPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +16,22 @@ class HomePetugasPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: const Text('Data Pasien'),
+        title: const Text('Riwayat Keluhan Pasien'),
         centerTitle: true,
         backgroundColor: AppColor.primary,
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          BlocBuilder<GetPasienBloc, GetPasienState>(
+          BlocBuilder<GetKeluhanBloc, GetKeluhanState>(
             builder: (context, state) {
-              if (state is GetPasienLoaded) {
-                final data = state.pasien;
+              if (state is GetKeluhanLoaded) {
+                final data = state.keluhan;
 
                 if (data.isEmpty) {
                   return Center(
                     child: Text(
-                      'Belum ada data pasien',
+                      'Belum ada data keluhan pasien',
                       style: AppFont.blackText.copyWith(
                         fontWeight: light,
                       ),
@@ -42,15 +41,14 @@ class HomePetugasPage extends StatelessWidget {
                 return ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    final pasien = data[index];
-                    return PasienCard(pasien: pasien);
+                    final keluhan = data[index];
+                    return KeluhanPetugasCard(keluhan: keluhan);
                   },
                 );
               }
-              if (state is GetPasienError) {
+              if (state is GetKeluhanError) {
                 return Center(
                   child: Text(state.message),
                 );

@@ -1,4 +1,5 @@
 // Ekstensi DateTimeExt
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -44,4 +45,13 @@ extension TimeOfDayExt on TimeOfDay {
     final DateTime now = DateTime(2000, 1, 1, hour, minute);
     return DateFormat.jm().format(now); // Menggunakan DateFormat dari intl package
   }
+}
+
+String formatTimestamp(Timestamp timestamp) {
+  DateTime dateTime = timestamp.toDate(); // Ubah Timestamp menjadi DateTime
+
+  String formattedDate = dateTime.toFormattedDate();
+  String formattedTime = DateFormat.Hm().format(dateTime);
+
+  return '$formattedDate $formattedTime';
 }
