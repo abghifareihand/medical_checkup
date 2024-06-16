@@ -18,7 +18,7 @@ class PetugasRemoteDatasource {
                 .toList(),
           );
     } catch (e) {
-      throw Exception('Gagal mengambil semua data pasien: $e');
+      throw Exception('Gagal mengambil data pasien: $e');
     }
   }
 
@@ -26,9 +26,9 @@ class PetugasRemoteDatasource {
   Future<Either<String, String>> addCheckup(CheckupModel checkup) async {
     try {
       await checkupCollection.doc(checkup.pasienId).set(checkup.toMap());
-      return const Right('Add Pasien Berhasil');
+      return const Right('Add checkup pasien berhasil');
     } catch (e) {
-      return Left(e.toString());
+      return Left('Gagal add checkup pasien: $e');
     }
   }
 
@@ -41,7 +41,7 @@ class PetugasRemoteDatasource {
                 .toList(),
           );
     } catch (e) {
-      throw Exception('Gagal mengambil semua data keluhan: $e');
+      throw Exception('Gagal mengambil data keluhan pasien: $e');
     }
   }
 
@@ -57,9 +57,9 @@ class PetugasRemoteDatasource {
         'catatanPetugas': catatan,
         'tanggalKembali': Timestamp.fromDate(tanggalKembali),
       });
-      return const Right('Update Keluhan Berhasil');
+      return const Right('Update keluhan berhasil');
     } catch (e) {
-      return Left(e.toString());
+       return Left('Gagal update keluhan pasien: $e');
     }
   }
 }

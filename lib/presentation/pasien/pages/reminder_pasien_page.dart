@@ -68,8 +68,13 @@ class KeluhanReminderPage extends StatelessWidget {
           final reminders = snapshot.data!.docs;
 
           if (reminders.isEmpty) {
-            return const Center(
-              child: Text('Belum ada data reminder'),
+            return Center(
+              child: Text(
+                'Belum ada data reminder keluhan',
+                style: AppFont.blackText.copyWith(
+                  fontWeight: medium,
+                ),
+              ),
             );
           }
           return ListView.builder(
@@ -155,8 +160,13 @@ class CheckupReminderPage extends StatelessWidget {
           final reminders = snapshot.data!.docs;
 
           if (reminders.isEmpty) {
-            return const Center(
-              child: Text('Belum ada data reminder'),
+            return Center(
+              child: Text(
+                'Belum ada data reminder checkup',
+                style: AppFont.blackText.copyWith(
+                  fontWeight: medium,
+                ),
+              ),
             );
           }
           return ListView.builder(
@@ -219,7 +229,6 @@ class CheckupReminderPage extends StatelessWidget {
     );
   }
 }
-
 
 void _activateReminderKeluhan(
     BuildContext context, DocumentSnapshot reminder) async {

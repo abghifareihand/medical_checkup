@@ -32,6 +32,7 @@ class BeritaTile extends StatelessWidget {
                 height: 80,
                 fit: BoxFit.cover,
               ),
+              
             ),
             const SizedBox(width: 12),
             Expanded(

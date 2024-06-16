@@ -19,7 +19,7 @@ class PasienRemoteDatasource {
                 .toList(),
           );
     } catch (e) {
-      throw Exception('Gagal mengambil data input pasien: $e');
+      throw Exception('Gagal mengambil data chekcup pasien: $e');
     }
   }
 
@@ -31,9 +31,9 @@ class PasienRemoteDatasource {
       await keluhanCollection.doc(documentId).update({
         'id': documentId,
       });
-      return const Right('Add Keluhan Berhasil');
+      return const Right('Add keluhan berhasil');
     } catch (e) {
-      return Left(e.toString());
+       return Left('Gagal add keluhan: $e');
     }
   }
 

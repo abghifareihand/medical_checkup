@@ -9,6 +9,8 @@ import 'package:medical_checkup/presentation/auth/bloc/user/user_bloc.dart';
 import 'package:medical_checkup/presentation/pasien/bloc/get_checkup_pasien/get_checkup_pasien_bloc.dart';
 import 'package:medical_checkup/presentation/pasien/pages/reminder_pasien_page.dart';
 import 'package:medical_checkup/presentation/pasien/widgets/berita_tile.dart';
+import 'package:medical_checkup/presentation/pasien/widgets/shimmer_checkup.dart';
+import 'package:medical_checkup/presentation/pasien/widgets/shimmer_user.dart';
 
 class HomePasienPage extends StatelessWidget {
   const HomePasienPage({super.key});
@@ -21,16 +23,15 @@ class HomePasienPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         children: [
           /// User Card
-          BlocBuilder<UserBloc, UserState>(
-            builder: (context, state) {
-              if (state is UserLoaded) {
-                final user = state.user;
-                return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BlocBuilder<UserBloc, UserState>(
+                  builder: (context, state) {
+                    if (state is UserLoaded) {
+                      return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -41,37 +42,48 @@ class HomePasienPage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            user.name,
+                            state.user.name,
                             style: AppFont.blackText.copyWith(
                               fontSize: 14,
                               fontWeight: semiBold,
                             ),
                           ),
                         ],
+                      );
+                    }
+
+                    if (state is UserLoading) {
+                      return const ShimmerUser();
+                    }
+
+                    if (state is UserError) {
+                      return Center(
+                        child: Text(state.message),
+                      );
+                    }
+
+                    return const ShimmerUser();
+                  },
+                ),
+                InkWell(
+                  borderRadius: BorderRadius.circular(50),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ReminderPasienPage(),
                       ),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(50),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ReminderPasienPage(),
-                            ),
-                          );
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.notifications,
-                          ),
-                        ),
-                      ),
-                    ],
+                    );
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.notifications,
+                    ),
                   ),
-                );
-              }
-              return Container();
-            },
+                ),
+              ],
+            ),
           ),
 
           BlocBuilder<GetCheckupPasienBloc, GetCheckupPasienState>(
@@ -160,15 +172,17 @@ class HomePasienPage extends StatelessWidget {
                 );
               }
 
+              if (state is GetCheckupPasienLoading) {
+                return const ShimmerCheckup();
+              }
+
               if (state is GetCheckupPasienError) {
                 return Center(
                   child: Text(state.message),
                 );
               }
 
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const ShimmerCheckup();
             },
           ),
 

@@ -21,6 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _checkLoginStatus() async {
+    await Future.delayed(const Duration(seconds: 3));
     bool isLoggedIn = await AuthLocalDatasource().isLogin();
     if (isLoggedIn) {
       String role = await AuthLocalDatasource().getRole();
