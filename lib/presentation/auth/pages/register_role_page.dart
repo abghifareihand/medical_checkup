@@ -74,7 +74,7 @@ class _RegisterRolePageState extends State<RegisterRolePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Dont have an account? ',
+                'Already have an account? ',
                 style: AppFont.blackText.copyWith(),
               ),
               GestureDetector(
