@@ -31,7 +31,7 @@
 
 Notifikasi 1 | Notifikasi 2|
 :---------:|:----------:|
-<img src="assets/screenshots/pasien-8.png" width=200/> | <img src="assets/screenshots/pasien-9.png" width=200/>
+<img src="assets/screenshots/pasien-8.png" width=300/> | <img src="assets/screenshots/pasien-9.png" width=300/>
 
 
 
