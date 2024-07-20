@@ -5,7 +5,7 @@
 - **Petugas**: 
     - Menambahkan data diri pasien (umur, tinggi badan, berat badan dll)
     - Merespon/menjawab keluhan pasien
-    - Membuat jadwal checkup serta pengingat pasien (notifikasi)
+    - Membuat jadwal checkup serta pengingat pasien (notifikasi). Contoh input tanggal dan jam checkup
   
 - **Pasien**:
     - Menginputkan keluhan yang selama ini di rasa oleh pasien
