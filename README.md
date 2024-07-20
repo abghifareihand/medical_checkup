@@ -3,9 +3,9 @@
 ### Roles
 
 - **Petugas**: 
-    - Menambahkan data diri pasien yang sudah register
+    - Menambahkan data diri pasien (umur, tinggi badan, berat badan dll)
     - Merespon/menjawab keluhan pasien
-    - Membuat jaadwal checkup dari pasien (notifikasi)
+    - Membuat jadwal checkup serta pengingat pasien (notifikasi)
   
 - **Pasien**:
     - Menginputkan keluhan yang selama ini di rasa oleh pasien
@@ -22,6 +22,7 @@
 ### PETUGAS
 <img src="assets/screenshots/petugas-1.png" width=300/> | <img src="assets/screenshots/petugas-2.png" width=300/>
 
+<br>
 
 ### PASIEN
 <img src="assets/screenshots/pasien-1.png" width=200/> | <img src="assets/screenshots/pasien-2.png" width=200/> | <img src="assets/screenshots/pasien-3.png" width=200/>
@@ -29,3 +30,12 @@
 <img src="assets/screenshots/pasien-4.png" width=200/> | <img src="assets/screenshots/pasien-5.png" width=200/> | <img src="assets/screenshots/pasien-6.png" width=200/>
 
 <img src="assets/screenshots/pasien-7.png" width=200/> | <img src="assets/screenshots/pasien-8.png" width=200/> | <img src="assets/screenshots/pasien-9.png" width=200/>
+
+<br>
+
+### FIREBASE
+<img src="assets/screenshots/firebase-1.png"/>
+<img src="assets/screenshots/firebase-2.png"/>
+<img src="assets/screenshots/firebase-3.png"/>
+<img src="assets/screenshots/firebase-4.png"/>
+<img src="assets/screenshots/firebase-5.png"/>
