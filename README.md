@@ -24,8 +24,8 @@
 
 
 ### PASIEN
-<img src="assets/screenshots/pasien-1.png" width=300/> | <img src="assets/screenshots/pasien-2.png" width=300/> | <img src="assets/screenshots/pasien-3.png" width=300/>
+<img src="assets/screenshots/pasien-1.png" width=200/> | <img src="assets/screenshots/pasien-2.png" width=200/> | <img src="assets/screenshots/pasien-3.png" width=200/>
 
-<img src="assets/screenshots/pasien-4.png" width=300/> | <img src="assets/screenshots/pasien-5.png" width=300/> | <img src="assets/screenshots/pasien-6.png" width=300/>
+<img src="assets/screenshots/pasien-4.png" width=200/> | <img src="assets/screenshots/pasien-5.png" width=200/> | <img src="assets/screenshots/pasien-6.png" width=200/>
 
-<img src="assets/screenshots/pasien-7.png" width=300/> | <img src="assets/screenshots/pasien-8.png" width=300/> | <img src="assets/screenshots/pasien-9.png" width=300/>
+<img src="assets/screenshots/pasien-7.png" width=200/> | <img src="assets/screenshots/pasien-8.png" width=200/> | <img src="assets/screenshots/pasien-9.png" width=200/>
