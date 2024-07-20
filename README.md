@@ -19,16 +19,13 @@
 
 **Screenshots:**
 
-### Petugas
+### PETUGAS
 <img src="assets/screenshots/petugas-1.png" width=300/> | <img src="assets/screenshots/petugas-2.png" width=300/>
 
 
-<!-- ### Manager Interface
-Dashboard Overview | Analytics | User Management
-:----------------:|:----------:|:--------------:|
-<img src="assets/screenshots/manager1.png" width=300/> | <img src="assets/screenshots/manager2.png" width=300/> | <img src="assets/screenshots/manager3.png" width=300/>
+### PASIEN
+<img src="assets/screenshots/pasien-1.png" width=300/> | <img src="assets/screenshots/pasien-2.png" width=300/> | <img src="assets/screenshots/pasien-3.png" width=300/>
 
-### Employee Interface
-Borrow Request | Item List | History
-:-------------:|:----------:|:-------:|
-<img src="assets/screenshots/employee1.png" width=300/> | <img src="assets/screenshots/employee2.png" width=300/> | <img src="assets/screenshots/employee3.png" width=300/> -->
+<img src="assets/screenshots/pasien-4.png" width=300/> | <img src="assets/screenshots/pasien-5.png" width=300/> | <img src="assets/screenshots/pasien-6.png" width=300/>
+
+<img src="assets/screenshots/pasien-7.png" width=300/> | <img src="assets/screenshots/pasien-8.png" width=300/> | <img src="assets/screenshots/pasien-9.png" width=300/>
