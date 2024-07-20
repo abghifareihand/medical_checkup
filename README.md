@@ -29,7 +29,11 @@
 
 <img src="assets/screenshots/pasien-4.png" width=200/> | <img src="assets/screenshots/pasien-5.png" width=200/> | <img src="assets/screenshots/pasien-6.png" width=200/>
 
-<img src="assets/screenshots/pasien-7.png" width=200/> | <img src="assets/screenshots/pasien-8.png" width=200/> | <img src="assets/screenshots/pasien-9.png" width=200/>
+Notifikasi 1 | Notifikasi 2|
+:---------:|:----------:|
+<img src="assets/screenshots/pasien-8.png" width=200/> | <img src="assets/screenshots/pasien-9.png" width=200/>
+
+
 
 <br>
 
