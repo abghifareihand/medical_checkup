@@ -13,7 +13,8 @@
   
 
 **Tech Stack:**
-- Firebase
+- Firebase Authentication
+- Firebase Firestore Database
 - Bloc State Management
 - Push Notification
 
@@ -38,10 +39,7 @@ Notifikasi 1 | Notifikasi 2|
 <br>
 
 ### FIREBASE
-Table checkup mengisi data diri pasien |
-:---------:|
 <img src="assets/screenshots/firebase-1.png"/>
-
 <img src="assets/screenshots/firebase-2.png"/>
 <img src="assets/screenshots/firebase-3.png"/>
 <img src="assets/screenshots/firebase-4.png"/>
