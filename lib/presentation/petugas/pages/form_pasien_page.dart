@@ -29,6 +29,7 @@ class FormPasienPage extends StatefulWidget {
 
 class _FormPasienPageState extends State<FormPasienPage> {
   final TextEditingController _alamatController = TextEditingController();
+  final TextEditingController _umurController = TextEditingController();
   final TextEditingController _tinggiController = TextEditingController();
   final TextEditingController _beratController = TextEditingController();
   final TextEditingController _tahapController = TextEditingController();
@@ -91,6 +92,10 @@ class _FormPasienPageState extends State<FormPasienPage> {
           CustomField.comment(
             controller: _alamatController,
             label: 'Alamat Pasien',
+          ),
+          CustomField.number(
+            controller: _umurController,
+            label: 'Umur Pasien',
           ),
           CustomField.number(
             controller: _tinggiController,
@@ -188,8 +193,10 @@ class _FormPasienPageState extends State<FormPasienPage> {
                         AddCheckup(
                           checkup: CheckupModel(
                             pasienId: widget.pasien.id,
+                            rekamMedis: formatRekamMedis(widget.pasien.id),
                             nama: widget.pasien.name,
                             alamat: _alamatController.text,
+                            umur: double.parse(_umurController.text),
                             tinggiBadan: double.parse(_tinggiController.text),
                             beratBadan: double.parse(_beratController.text),
                             statusKawin: _selectedStatusKawin,
@@ -197,7 +204,7 @@ class _FormPasienPageState extends State<FormPasienPage> {
                             tanggalDatang: DateTime.now(),
                             tahapPengobatan: int.parse(_tahapController.text),
                             jenisObat: _jenisobatController.text,
-                            tanggalKembali: _selectedTanggalKembali,
+                            tanggalKembali: selectedDateTime,
                             catatan: _catatanController.text,
                           ),
                         ),

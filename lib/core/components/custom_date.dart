@@ -10,12 +10,12 @@ class CustomDate extends StatefulWidget {
   final bool readOnly;
 
   const CustomDate({
-    Key? key,
+    super.key,
     required this.label,
     this.initialDate,
     required this.onDateChanged,
     this.readOnly = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomDate> createState() => _CustomDateState();

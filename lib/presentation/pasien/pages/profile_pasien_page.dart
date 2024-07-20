@@ -4,6 +4,7 @@ import 'package:medical_checkup/core/components/custom_button.dart';
 import 'package:medical_checkup/core/components/spaces.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/core/constants/app_font.dart';
+import 'package:medical_checkup/core/constants/date_time_ext.dart';
 import 'package:medical_checkup/presentation/auth/bloc/user/user_bloc.dart';
 import 'package:medical_checkup/presentation/pasien/bloc/get_checkup_pasien/get_checkup_pasien_bloc.dart';
 import '../../../core/constants/app_image.dart';
@@ -108,13 +109,26 @@ class ProfilePasienPage extends StatelessWidget {
                       ),
                       const SpaceHeight(8),
                       Text(
+                        'Umur',
+                        style: AppFont.blackText.copyWith(
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                      Text(
+                        '${formatDecimal(data.umur)} tahun',
+                        style: AppFont.blackText.copyWith(
+                          fontWeight: regular,
+                        ),
+                      ),
+                      const SpaceHeight(8),
+                      Text(
                         'Tinggi Badan',
                         style: AppFont.blackText.copyWith(
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        '${data.tinggiBadan} cm',
+                        '${formatDecimal(data.tinggiBadan)} cm',
                         style: AppFont.blackText.copyWith(
                           fontWeight: regular,
                         ),
@@ -127,7 +141,7 @@ class ProfilePasienPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${data.beratBadan} kg',
+                        '${formatDecimal(data.beratBadan)} kg',
                         style: AppFont.blackText.copyWith(
                           fontWeight: regular,
                         ),

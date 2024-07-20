@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CheckupModel {
   String pasienId;
+  String rekamMedis;
   String nama;
   String alamat;
+  double umur;
   double tinggiBadan;
   double beratBadan;
   String statusKawin;
@@ -16,8 +18,10 @@ class CheckupModel {
 
   CheckupModel({
     required this.pasienId,
+    required this.rekamMedis,
     required this.nama,
     required this.alamat,
+    required this.umur,
     required this.tinggiBadan,
     required this.beratBadan,
     required this.statusKawin,
@@ -32,8 +36,10 @@ class CheckupModel {
   factory CheckupModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     return CheckupModel(
       pasienId: snapshot['pasienId'],
+      rekamMedis: snapshot['rekamMedis'],
       nama: snapshot['nama'],
       alamat: snapshot['alamat'],
+      umur: snapshot['umur'],
       tinggiBadan: snapshot['tinggiBadan'],
       beratBadan: snapshot['beratBadan'],
       statusKawin: snapshot['statusKawin'],
@@ -49,8 +55,10 @@ class CheckupModel {
   Map<String, dynamic> toMap() {
     return {
       'pasienId': pasienId,
+      'rekamMedis': rekamMedis,
       'nama': nama,
       'alamat': alamat,
+      'umur': umur,
       'tinggiBadan': tinggiBadan,
       'beratBadan': beratBadan,
       'statusKawin': statusKawin,

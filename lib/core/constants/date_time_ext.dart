@@ -55,3 +55,21 @@ String formatTimestamp(Timestamp timestamp) {
 
   return '$formattedDate $formattedTime';
 }
+
+
+String formatRekamMedis(String patientId) {
+  int hashCode = patientId.hashCode;
+  String rmNumber = 'RM-${hashCode.abs()}'; // abs() untuk memastikan positif
+  return rmNumber;
+}
+
+String formatDecimal(double value) {
+  String result = value.toString();
+  
+  // Menghapus desimal jika nilainya nol
+  if (value % 1 == 0) {
+    result = value.toInt().toString(); // Ubah ke integer dan kemudian ke string
+  }
+  
+  return result;
+}

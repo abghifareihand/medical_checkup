@@ -8,7 +8,7 @@ enum CustomFieldStyle {
   password,
   number,
   comment,
-  person, // Tambahkan tipe baru di enum
+  person,
 }
 
 class CustomField extends StatefulWidget {

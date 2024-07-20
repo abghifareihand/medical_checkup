@@ -105,6 +105,19 @@ class HomePasienPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
+                      'No. RM',
+                      style: AppFont.blackText.copyWith(
+                        fontWeight: semiBold,
+                      ),
+                    ),
+                    Text(
+                      data.rekamMedis,
+                      style: AppFont.blackText.copyWith(
+                        fontWeight: regular,
+                      ),
+                    ),
+                    const SpaceHeight(8),
+                    Text(
                       'Tanggal Kedatangan',
                       style: AppFont.blackText.copyWith(
                         fontWeight: semiBold,

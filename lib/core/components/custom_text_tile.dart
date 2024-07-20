@@ -6,7 +6,7 @@ import '../../../core/constants/app_color.dart';
 class CustomTextTile extends StatelessWidget {
   final String label;
   final String text;
-  const CustomTextTile({super.key, required this.label, required this.text});
+  const CustomTextTile({super.key, required this.label, required this.text,});
 
   @override
   Widget build(BuildContext context) {

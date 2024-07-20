@@ -46,6 +46,19 @@ class PetugasRemoteDatasource {
   }
 
   /// Petugas
+  Stream<List<CheckupModel>> getCheckup() {
+    try {
+      return checkupCollection.snapshots().map(
+            (snapshot) => snapshot.docs
+                .map((doc) => CheckupModel.fromDocumentSnapshot(doc))
+                .toList(),
+          );
+    } catch (e) {
+      throw Exception('Gagal mengambil data checkup pasien: $e');
+    }
+  }
+
+  /// Petugas
   Future<Either<String, String>> updateKeluhan(
     String keluhanId,
     String catatan,
@@ -59,7 +72,7 @@ class PetugasRemoteDatasource {
       });
       return const Right('Update keluhan berhasil');
     } catch (e) {
-       return Left('Gagal update keluhan pasien: $e');
+      return Left('Gagal update keluhan pasien: $e');
     }
   }
 }

@@ -11,7 +11,7 @@ import 'package:medical_checkup/core/components/custom_time.dart';
 import 'package:medical_checkup/core/constants/app_color.dart';
 import 'package:medical_checkup/core/constants/date_time_ext.dart';
 import 'package:medical_checkup/data/models/keluhan_model.dart';
-import 'package:medical_checkup/presentation/petugas/bloc/update/update_keluhan_bloc.dart';
+import 'package:medical_checkup/presentation/petugas/bloc/update_keluhan/update_keluhan_bloc.dart';
 
 class PetugasDetailPage extends StatefulWidget {
   final KeluhanModel keluhan;
